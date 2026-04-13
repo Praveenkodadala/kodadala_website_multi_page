@@ -72,3 +72,9 @@ function submitQuote(){
   var b=encodeURIComponent('Hi Kodadala Team,\n\nI\'d like to request a quote.\n\nName: '+n+'\nCompany: '+c+'\nCountry: '+co+'\nProduct: '+p+'\n\n'+m+'\n\nBest regards,\n'+n);
   window.location.href='mailto:sales@kodadala.com?subject='+s+'&body='+b;
 }
+
+
+
+function openModal(product) {
+  window.location.href = '/products/' + product + '/';
+}
