@@ -60,18 +60,18 @@ function submitContactForm(){
 }
 
 /* Quote form (home page) */
-function submitQuote(){
-  var n=document.getElementById('qName').value.trim(),
-      c=document.getElementById('qCompany').value.trim(),
-      e=document.getElementById('qEmail').value.trim(),
-      co=document.getElementById('qCountry').value.trim(),
-      p=document.getElementById('qProduct').value,
-      m=document.getElementById('qMsg').value.trim();
-  if(!n||!e){alert('Please enter your name and email.');return;}
-  var s=encodeURIComponent('Quote Request — '+(p||'Indian Spices')+' — KODADALA TRADING COMPANY');
-  var b=encodeURIComponent('Hi Kodadala Team,\n\nI\'d like to request a quote.\n\nName: '+n+'\nCompany: '+c+'\nCountry: '+co+'\nProduct: '+p+'\n\n'+m+'\n\nBest regards,\n'+n);
-  window.location.href='mailto:sales@kodadala.com?subject='+s+'&body='+b;
-}
+// function submitQuote(){
+//   var n=document.getElementById('qName').value.trim(),
+//       c=document.getElementById('qCompany').value.trim(),
+//       e=document.getElementById('qEmail').value.trim(),
+//       co=document.getElementById('qCountry').value.trim(),
+//       p=document.getElementById('qProduct').value,
+//       m=document.getElementById('qMsg').value.trim();
+//   if(!n||!e){alert('Please enter your name and email.');return;}
+//   var s=encodeURIComponent('Quote Request — '+(p||'Indian Spices')+' — KODADALA TRADING COMPANY');
+//   var b=encodeURIComponent('Hi Kodadala Team,\n\nI\'d like to request a quote.\n\nName: '+n+'\nCompany: '+c+'\nCountry: '+co+'\nProduct: '+p+'\n\n'+m+'\n\nBest regards,\n'+n);
+//   window.location.href='mailto:sales@kodadala.com?subject='+s+'&body='+b;
+// }
 
 
 
@@ -85,7 +85,7 @@ async function submitQuote() {
 
     const formData = new FormData();
 
-    formData.append("access_key", "1ba15fe6-067c-4eb9-a0a0-5bf41c886cdd");
+    formData.append("access_key", "3eeaf356-cce9-4d2a-a1a7-d8af589101cf");
 
     formData.append("name", document.getElementById("qName").value);
     formData.append("email", document.getElementById("qEmail").value);
@@ -98,6 +98,7 @@ async function submitQuote() {
 
     formData.append("subject", "New Inquiry from Kodadala Website");
     formData.append("from_name", "Kodadala Website");
+   
 
     btn.innerText = "Sending...";
     btn.disabled = true;
