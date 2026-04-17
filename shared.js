@@ -78,3 +78,57 @@ function submitQuote(){
 function openModal(product) {
   window.location.href = '/products/' + product + '/';
 }
+
+
+async function submitQuote() {
+    const btn = document.querySelector(".form-submit");
+
+    const formData = new FormData();
+
+    formData.append("access_key", "1ba15fe6-067c-4eb9-a0a0-5bf41c886cdd");
+
+    formData.append("name", document.getElementById("qName").value);
+    formData.append("email", document.getElementById("qEmail").value);
+    formData.append("message", document.getElementById("qMsg").value);
+
+    // Optional extra fields
+    formData.append("company", document.getElementById("qCompany").value);
+    formData.append("country", document.getElementById("qCountry").value);
+    formData.append("product", document.getElementById("qProduct").value);
+
+    formData.append("subject", "New Inquiry from Kodadala Website");
+    formData.append("from_name", "Kodadala Website");
+
+    btn.innerText = "Sending...";
+    btn.disabled = true;
+
+    try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("✅ Inquiry sent successfully!");
+            
+            // Clear form
+            document.getElementById("qName").value = "";
+            document.getElementById("qEmail").value = "";
+            document.getElementById("qMsg").value = "";
+            document.getElementById("qCompany").value = "";
+            document.getElementById("qCountry").value = "";
+            document.getElementById("qProduct").value = "";
+
+        } else {
+            alert("❌ " + data.message);
+        }
+
+    } catch (error) {
+        alert("⚠️ Something went wrong");
+    }
+
+    btn.innerText = "Send Inquiry →";
+    btn.disabled = false;
+}
