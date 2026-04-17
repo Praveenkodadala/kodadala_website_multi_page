@@ -37,27 +37,27 @@ function switchDetailTab(id, btn){
 }
 
 /* Contact form */
-function submitContactForm(){
-  var n=document.getElementById('cName'),co=document.getElementById('cCompany'),
-      e=document.getElementById('cEmail'),ph=document.getElementById('cPhone'),
-      ct=document.getElementById('cCountry'),pr=document.getElementById('cProduct'),
-      qt=document.getElementById('cQty'),m=document.getElementById('cMsg');
-  if(!n||!e||!n.value.trim()||!e.value.trim()){alert('Please fill in your name and email.');return;}
-  var s=encodeURIComponent('Enquiry — '+(pr?pr.value:'Indian Spices')+' — KODADALA TRADING COMPANY');
-  var b=encodeURIComponent(
-    'Hi Kodadala Team,\n\n'+
-    'Name: '+(n?n.value:'')+
-    '\nCompany: '+(co?co.value:'')+
-    '\nEmail: '+(e?e.value:'')+
-    '\nPhone: '+(ph?ph.value:'')+
-    '\nCountry: '+(ct?ct.value:'')+
-    '\nProduct: '+(pr?pr.value:'')+
-    '\nQuantity: '+(qt?qt.value:'')+
-    '\n\n'+(m?m.value:'')+
-    '\n\nBest regards,\n'+(n?n.value:'')
-  );
-  window.location.href='mailto:sales@kodadala.com?subject='+s+'&body='+b;
-}
+// function submitContactForm(){
+//   var n=document.getElementById('cName'),co=document.getElementById('cCompany'),
+//       e=document.getElementById('cEmail'),ph=document.getElementById('cPhone'),
+//       ct=document.getElementById('cCountry'),pr=document.getElementById('cProduct'),
+//       qt=document.getElementById('cQty'),m=document.getElementById('cMsg');
+//   if(!n||!e||!n.value.trim()||!e.value.trim()){alert('Please fill in your name and email.');return;}
+//   var s=encodeURIComponent('Enquiry — '+(pr?pr.value:'Indian Spices')+' — KODADALA TRADING COMPANY');
+//   var b=encodeURIComponent(
+//     'Hi Kodadala Team,\n\n'+
+//     'Name: '+(n?n.value:'')+
+//     '\nCompany: '+(co?co.value:'')+
+//     '\nEmail: '+(e?e.value:'')+
+//     '\nPhone: '+(ph?ph.value:'')+
+//     '\nCountry: '+(ct?ct.value:'')+
+//     '\nProduct: '+(pr?pr.value:'')+
+//     '\nQuantity: '+(qt?qt.value:'')+
+//     '\n\n'+(m?m.value:'')+
+//     '\n\nBest regards,\n'+(n?n.value:'')
+//   );
+//   window.location.href='mailto:sales@kodadala.com?subject='+s+'&body='+b;
+// }
 
 /* Quote form (home page) */
 // function submitQuote(){
@@ -100,7 +100,7 @@ async function submitQuote() {
     formData.append("from_name", "Kodadala Website");
    
 
-    btn.innerText = "Sending...";
+    btn.innerHTML = "Sending...";
     btn.disabled = true;
 
     try {
@@ -112,16 +112,9 @@ async function submitQuote() {
         const data = await response.json();
 
         if (response.ok) {
-            alert("✅ Inquiry sent successfully!");
-            
-            // Clear form
-            document.getElementById("qName").value = "";
-            document.getElementById("qEmail").value = "";
-            document.getElementById("qMsg").value = "";
-            document.getElementById("qCompany").value = "";
-            document.getElementById("qCountry").value = "";
-            document.getElementById("qProduct").value = "";
-
+          
+         window.location.href = "/thank-you/";
+         return;
         } else {
             alert("❌ " + data.message);
         }
